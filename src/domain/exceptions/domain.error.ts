@@ -18,3 +18,15 @@ export class DomainValidationError extends DomainError {
     this.name = 'DomainValidationError';
   }
 }
+
+export class UnacknowledgedSafetyPrerequisiteError extends DomainError {
+  public readonly missingPrerequisiteIds: string[];
+
+  constructor(missingPrerequisiteIds: string[]) {
+    super(
+      `Cannot transition work order to approval: missing safety prerequisites [${missingPrerequisiteIds.join(', ')}].`
+    );
+    this.name = 'UnacknowledgedSafetyPrerequisiteError';
+    this.missingPrerequisiteIds = missingPrerequisiteIds;
+  }
+}
