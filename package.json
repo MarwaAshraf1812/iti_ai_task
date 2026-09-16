@@ -23,6 +23,7 @@
   "author": "Marwa Ashraf",
   "license": "MIT",
   "dependencies": {
+    "@google/genai": "^2.22.0",
     "dotenv": "^16.4.7",
     "fastify": "^5.12.5"
   },

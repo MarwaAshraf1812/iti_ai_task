@@ -6,8 +6,11 @@ dotenv.config();
 
 const config = {
   databaseUrl: process.env.DATABASE_URL,
-  llmApiKey: process.env.OPENAI_API_KEY,
-  llmModel: process.env.EMBEDDING_MODEL,
+  llmProvider: (process.env.LLM_PROVIDER as 'gemini' | 'ollama') || 'gemini',
+  geminiApiKey: process.env.GEMINI_API_KEY,
+  geminiModel: process.env.GEMINI_MODEL,
+  ollamaBaseUrl: process.env.OLLAMA_BASE_URL,
+  ollamaModel: process.env.OLLAMA_MODEL,
 };
 
 const container = Container.create(config);
