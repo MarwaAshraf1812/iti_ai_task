@@ -1,15 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { Container } from '../../src/infrastructure/container.js';
+import { ResilientLLMProvider } from '../../src/infrastructure/llm/resilient-llm.provider.js';
 
 describe('Dependency Injection Container', () => {
   it('should initialize container and resolve use cases via constructor injection', () => {
     const container = Container.create({
       databaseUrl: 'postgresql://localhost:5432/test',
-      llmApiKey: 'test-key',
+      geminiApiKey: 'test-key',
     });
 
     expect(container.equipmentRepository).toBeDefined();
     expect(container.llmProvider).toBeDefined();
+    expect(container.llmProvider).toBeInstanceOf(ResilientLLMProvider);
     expect(container.reviewQueueGateway).toBeDefined();
     expect(container.diagnoseEquipmentUseCase).toBeDefined();
   });
